@@ -1,0 +1,190 @@
+/*
+SQLyog Ultimate v12.11 (64 bit)
+MySQL - 5.6.16 : Database - cmwrc_ticket_db
+*********************************************************************
+*/
+
+
+/*!40101 SET NAMES utf8 */;
+
+/*!40101 SET SQL_MODE=''*/;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`cmwrc_ticket_db` /*!40100 DEFAULT CHARACTER SET latin1 */;
+
+/*Table structure for table `eventmaster` */
+
+CREATE TABLE `eventmaster` (
+  `eventIDNum` int(11) NOT NULL AUTO_INCREMENT,
+  `eventIDName` varchar(255) NOT NULL,
+  `eventStartDate` date NOT NULL,
+  `eventEndDate` date NOT NULL,
+  `ticketSaleStartDate` date NOT NULL,
+  `ticketSaleEndDate` date NOT NULL,
+  `walletID` varchar(255) NOT NULL,
+  `childCareOption` char(1) DEFAULT NULL,
+  `specialNeedsOption` char(1) DEFAULT NULL,
+  `optInOptOut` char(1) DEFAULT NULL,
+  `creditCard` char(1) DEFAULT NULL,
+  `eCheck` char(1) DEFAULT NULL,
+  `cash` char(1) DEFAULT NULL,
+  `check` char(1) DEFAULT NULL,
+  `IOU` char(1) DEFAULT NULL,
+  `ccFeePercent` float DEFAULT NULL,
+  `closeOutMessage` varchar(255) DEFAULT NULL,
+  `maxAdultTickets` int(11) DEFAULT NULL,
+  `maxChildTickets` int(11) DEFAULT NULL,
+  `maxYouthTickets` int(11) DEFAULT NULL,
+  `adultColLabel` varchar(255) DEFAULT 'Adult (Age > 21)',
+  `childColLabel` varchar(255) DEFAULT 'Child (Age < 15)',
+  `youthColLabel` varchar(255) DEFAULT 'Youth (Age bet 16 and 21)',
+  `eventName` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`eventIDNum`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+/*Data for the table `eventmaster` */
+
+insert  into `eventmaster`(`eventIDNum`,`eventIDName`,`eventStartDate`,`eventEndDate`,`ticketSaleStartDate`,`ticketSaleEndDate`,`walletID`,`childCareOption`,`specialNeedsOption`,`optInOptOut`,`creditCard`,`eCheck`,`cash`,`check`,`IOU`,`ccFeePercent`,`closeOutMessage`,`maxAdultTickets`,`maxChildTickets`,`maxYouthTickets`,`adultColLabel`,`childColLabel`,`youthColLabel`,`eventName`) values (1,'GeetRamayana2016','2016-05-21','2016-05-22','2016-03-01','2016-05-20','GEETRAMA2016','Y','Y','Y','Y','Y','N','N','Y',2,NULL,NULL,NULL,NULL,'Adult(Age >21)','Child (Age<15)','Youth (Age bet 16 and 21)','Geet Ramayan 2016');
+
+/*Table structure for table `familypreferences` */
+
+CREATE TABLE `familypreferences` (
+  `familyId` int(11) NOT NULL,
+  `childCareOption` char(1) DEFAULT NULL,
+  `specialNeedOption` char(1) DEFAULT NULL,
+  `optInoptOut` char(1) DEFAULT NULL,
+  PRIMARY KEY (`familyId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `familypreferences` */
+
+/*Table structure for table `sevakcredentials` */
+
+CREATE TABLE `sevakcredentials` (
+  `sevakId` int(11) NOT NULL,
+  `sevakName` varchar(512) NOT NULL,
+  `sevakEmail` varchar(512) NOT NULL,
+  `sevakAccessPIN` int(11) DEFAULT NULL,
+  `sevakPhone` varchar(255) DEFAULT NULL,
+  `active` char(1) DEFAULT 'Y',
+  PRIMARY KEY (`sevakId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `sevakcredentials` */
+
+/*Table structure for table `ticketoptions` */
+
+CREATE TABLE `ticketoptions` (
+  `ticketOptionId` int(11) NOT NULL AUTO_INCREMENT,
+  `ticketEventId` int(11) NOT NULL,
+  `ticketCode` varchar(255) NOT NULL,
+  `ticketDescription` varchar(512) DEFAULT NULL,
+  `adultTicketPrice` int(11) NOT NULL,
+  `childTicketPrice` int(11) NOT NULL,
+  `youthTicketPrice` int(11) NOT NULL,
+  `effectiveStart` date NOT NULL,
+  `effectiveEnd` date NOT NULL,
+  `donationAmountPortion` float DEFAULT NULL,
+  `optionMessage` year(4) DEFAULT NULL,
+  PRIMARY KEY (`ticketOptionId`),
+  KEY `ticketEventId` (`ticketEventId`),
+  CONSTRAINT `ticketoptions_ibfk_1` FOREIGN KEY (`ticketEventId`) REFERENCES `eventmaster` (`eventIDNum`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+
+/*Data for the table `ticketoptions` */
+
+insert  into `ticketoptions`(`ticketOptionId`,`ticketEventId`,`ticketCode`,`ticketDescription`,`adultTicketPrice`,`childTicketPrice`,`youthTicketPrice`,`effectiveStart`,`effectiveEnd`,`donationAmountPortion`,`optionMessage`) values (1,1,'SatFrontSec','Saturday Front Section',20,15,15,'2016-03-01','2016-05-07',0,0000);
+insert  into `ticketoptions`(`ticketOptionId`,`ticketEventId`,`ticketCode`,`ticketDescription`,`adultTicketPrice`,`childTicketPrice`,`youthTicketPrice`,`effectiveStart`,`effectiveEnd`,`donationAmountPortion`,`optionMessage`) values (2,1,'SunFrontSec','Sunday Front Section',20,15,15,'2016-03-01','2016-05-07',0,0000);
+insert  into `ticketoptions`(`ticketOptionId`,`ticketEventId`,`ticketCode`,`ticketDescription`,`adultTicketPrice`,`childTicketPrice`,`youthTicketPrice`,`effectiveStart`,`effectiveEnd`,`donationAmountPortion`,`optionMessage`) values (3,1,'BothDayFrontSec','Both Day Front Section',30,20,20,'2016-03-01','2016-05-07',0,0000);
+insert  into `ticketoptions`(`ticketOptionId`,`ticketEventId`,`ticketCode`,`ticketDescription`,`adultTicketPrice`,`childTicketPrice`,`youthTicketPrice`,`effectiveStart`,`effectiveEnd`,`donationAmountPortion`,`optionMessage`) values (4,1,'SatFrontSec','Saturday Front Section',40,15,15,'2016-05-08','2016-05-22',0,0000);
+insert  into `ticketoptions`(`ticketOptionId`,`ticketEventId`,`ticketCode`,`ticketDescription`,`adultTicketPrice`,`childTicketPrice`,`youthTicketPrice`,`effectiveStart`,`effectiveEnd`,`donationAmountPortion`,`optionMessage`) values (5,1,'SunFrontSec','Sunday Front Section',40,15,15,'2016-05-08','2016-05-22',0,0000);
+insert  into `ticketoptions`(`ticketOptionId`,`ticketEventId`,`ticketCode`,`ticketDescription`,`adultTicketPrice`,`childTicketPrice`,`youthTicketPrice`,`effectiveStart`,`effectiveEnd`,`donationAmountPortion`,`optionMessage`) values (6,1,'BothDayFrontSec','Both Day Front Section',60,20,20,'2016-05-08','2016-05-22',0,0000);
+insert  into `ticketoptions`(`ticketOptionId`,`ticketEventId`,`ticketCode`,`ticketDescription`,`adultTicketPrice`,`childTicketPrice`,`youthTicketPrice`,`effectiveStart`,`effectiveEnd`,`donationAmountPortion`,`optionMessage`) values (7,1,'SatBackSec','Saturday Back Section',25,15,15,'2016-03-01','2016-05-07',0,0000);
+insert  into `ticketoptions`(`ticketOptionId`,`ticketEventId`,`ticketCode`,`ticketDescription`,`adultTicketPrice`,`childTicketPrice`,`youthTicketPrice`,`effectiveStart`,`effectiveEnd`,`donationAmountPortion`,`optionMessage`) values (8,1,'SunBackSec','Sunday Back Section',25,15,15,'2016-03-01','2016-05-07',0,0000);
+insert  into `ticketoptions`(`ticketOptionId`,`ticketEventId`,`ticketCode`,`ticketDescription`,`adultTicketPrice`,`childTicketPrice`,`youthTicketPrice`,`effectiveStart`,`effectiveEnd`,`donationAmountPortion`,`optionMessage`) values (9,1,'BothDayBackSec','Both Day Back Section',41,20,20,'2016-03-01','2016-05-07',0,0000);
+insert  into `ticketoptions`(`ticketOptionId`,`ticketEventId`,`ticketCode`,`ticketDescription`,`adultTicketPrice`,`childTicketPrice`,`youthTicketPrice`,`effectiveStart`,`effectiveEnd`,`donationAmountPortion`,`optionMessage`) values (10,1,'SatBackSec','Saturday Back Section',50,15,15,'2016-05-08','2016-05-22',0,0000);
+insert  into `ticketoptions`(`ticketOptionId`,`ticketEventId`,`ticketCode`,`ticketDescription`,`adultTicketPrice`,`childTicketPrice`,`youthTicketPrice`,`effectiveStart`,`effectiveEnd`,`donationAmountPortion`,`optionMessage`) values (11,1,'SunBackSec','Sunday Back Section',50,15,15,'2016-05-08','2016-05-22',0,0000);
+insert  into `ticketoptions`(`ticketOptionId`,`ticketEventId`,`ticketCode`,`ticketDescription`,`adultTicketPrice`,`childTicketPrice`,`youthTicketPrice`,`effectiveStart`,`effectiveEnd`,`donationAmountPortion`,`optionMessage`) values (12,1,'BothDayBackSec','Both Day Back Section',75,20,20,'2016-05-08','2016-05-22',0,0000);
+
+/*Table structure for table `ticketpickuplocations` */
+
+CREATE TABLE `ticketpickuplocations` (
+  `locationId` int(11) NOT NULL AUTO_INCREMENT,
+  `eventId` int(11) NOT NULL,
+  `locationDescription` varchar(512) DEFAULT NULL,
+  `locationIdName` varchar(255) NOT NULL,
+  PRIMARY KEY (`locationId`),
+  KEY `eventIdConstr` (`eventId`),
+  CONSTRAINT `eventIdConstr` FOREIGN KEY (`eventId`) REFERENCES `eventmaster` (`eventIDNum`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+/*Data for the table `ticketpickuplocations` */
+
+insert  into `ticketpickuplocations`(`locationId`,`eventId`,`locationDescription`,`locationIdName`) values (1,1,'Chinmayam','CHMD');
+insert  into `ticketpickuplocations`(`locationId`,`eventId`,`locationDescription`,`locationIdName`) values (2,1,'Chinmaya Somnath','CSVA');
+insert  into `ticketpickuplocations`(`locationId`,`eventId`,`locationDescription`,`locationIdName`) values (3,1,'Chinmaya Fredrick','CHFD');
+insert  into `ticketpickuplocations`(`locationId`,`eventId`,`locationDescription`,`locationIdName`) values (5,1,'At Venue','Venue');
+
+/*Table structure for table `ticketsalesdetails` */
+
+CREATE TABLE `ticketsalesdetails` (
+  `shoppingCartId` int(11) NOT NULL,
+  `familyId` int(11) DEFAULT NULL,
+  `ticketCode` varchar(255) NOT NULL,
+  `adultTicketCount` int(11) NOT NULL,
+  `childTicketCount` int(11) NOT NULL,
+  `youthTicketCount` int(11) NOT NULL,
+  `ticketDetails` varchar(255) DEFAULT NULL,
+  `comments` varchar(255) DEFAULT NULL,
+  KEY `familyId` (`familyId`),
+  CONSTRAINT `ticketsalesdetails_ibfk_1` FOREIGN KEY (`familyId`) REFERENCES `familypreferences` (`familyId`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `ticketsalesdetails` */
+
+/*Table structure for table `ticketsalesmaster` */
+
+CREATE TABLE `ticketsalesmaster` (
+  `shoppingCartId` int(11) NOT NULL AUTO_INCREMENT,
+  `firstName` varchar(255) NOT NULL,
+  `lastName` varchar(255) NOT NULL,
+  `addressLine1` varchar(512) NOT NULL,
+  `addressLine2` varchar(512) DEFAULT NULL,
+  `city` varchar(255) NOT NULL,
+  `state` varchar(255) NOT NULL,
+  `zip` int(11) NOT NULL,
+  `email` year(4) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `familyId` int(11) DEFAULT NULL,
+  `eventId` int(11) NOT NULL,
+  `ticketPickUpLoc` int(11) DEFAULT NULL,
+  `paymentType` varchar(255) NOT NULL,
+  `totalTicketAmount` float NOT NULL,
+  `paymentAuthCode` varchar(255) DEFAULT NULL,
+  `amountCollected` float DEFAULT NULL,
+  `totalAmount` float DEFAULT NULL,
+  `sevakCredentials` varchar(255) DEFAULT NULL,
+  `checkNo` int(11) DEFAULT NULL,
+  `checkDate` date DEFAULT NULL,
+  `primaryChapter` varchar(255) DEFAULT NULL,
+  `comments` varchar(512) DEFAULT NULL,
+  `addedDate` date NOT NULL,
+  `modifiedDate` date DEFAULT NULL,
+  PRIMARY KEY (`shoppingCartId`),
+  KEY `eventId` (`eventId`),
+  KEY `familyId` (`familyId`),
+  KEY `ticketPickUpLoc` (`ticketPickUpLoc`),
+  CONSTRAINT `ticketsalesmaster_ibfk_1` FOREIGN KEY (`eventId`) REFERENCES `eventmaster` (`eventIDNum`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  CONSTRAINT `ticketsalesmaster_ibfk_2` FOREIGN KEY (`familyId`) REFERENCES `familypreferences` (`familyId`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  CONSTRAINT `ticketsalesmaster_ibfk_3` FOREIGN KEY (`ticketPickUpLoc`) REFERENCES `ticketpickuplocations` (`locationId`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `ticketsalesmaster` */
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
