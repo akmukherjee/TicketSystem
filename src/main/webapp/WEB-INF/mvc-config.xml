@@ -16,6 +16,10 @@
         <bean id = "ticketInfoDao" class="ticketSystem.cmwrc.dao.ticketInfoDao">
                 <property name="dataSource" ref="dataSource"/>      
         </bean>
+        <bean id = "paymentUpdateDao" class="ticketSystem.cmwrc.dao.paymentUpdateDao">
+        		<property name="dataSource" ref="dataSource"/>
+        </bean>
+        
         
         <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
     		<property name="dataSource" ref="dataSource"/>
