@@ -38,7 +38,7 @@
               <img src="http://www.chinmayamission.com/wp-content/uploads/2014/07/ccmt-banr.jpg" class="img-responsive image_style" >
             </div>
             <div>    
-              <p>Thank you ${name} for your purchase.Your Confirmation Number is: <b>${authorizationCode}</b></p>
+              <span><br><br>Thank you <b>${name}</b> for your purchase.Your Confirmation Number is: <b>${authorizationCode}.</b>Your ticket details are as shown below.<br></span>
             </div>    
            
             <div class="row row-content">

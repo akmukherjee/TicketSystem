@@ -12,6 +12,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import ticketSystem.cmwrc.dao.paymentUpdateDao;
 import ticketSystem.cmwrc.model.TicketDetailsModel;
 
+/**********************************************************
+ * This Controller handles responses received from the 
+ * Payment Gateway. It updates the Payment records
+ * and redirects the User to the Confirmation Page
+ *
+ **********************************************************/
+
+
 @Controller
 public class PaymentResponseController {
 	@Autowired
@@ -25,14 +33,18 @@ public class PaymentResponseController {
 		System.out.println("pg_billto_postal_name_first "+firstName);
 		System.out.println("pg_billto_postal_name_last "+lastName);*/
 		
+		//Get the Shopping Cart Id (Received from the Payment Page)
 		Integer shoppingCartIdInt= new Integer(Integer.parseInt(shoppingCartId));
+		//Update TicketSales Master with Authorization Code.
 		Boolean status =paymentUpdateDao.updatePaymentRecord(shoppingCartIdInt, authorizationCode);
 		System.out.println("Status: "+status);
+		//Get the Ticket Details Purchase and populate Model Objects
 		List<TicketDetailsModel> ticketDetailsmodel= paymentUpdateDao.getTicketRows(shoppingCartIdInt);
 		String name = firstName +" "+lastName;
 		model.addAttribute("ticketDetails", ticketDetailsmodel);
 		model.addAttribute("authorizationCode", authorizationCode);
 		model.addAttribute("name", name);
+		//Redirect the User to the Confirmation Page
 		return "confirmation";
 		
 	}

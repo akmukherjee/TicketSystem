@@ -79,4 +79,21 @@ public class TicketDetailsModel implements RowMapper<TicketDetailsModel>,Seriali
 
 		return tModel;
 	}
+
+
+
+	public TicketDetailsModel(String ticketCode, int adultTicketCount,
+			int childTicketCount, int youthTicketCount) {
+		super();
+		TicketCode = ticketCode;
+		this.adultTicketCount = adultTicketCount;
+		this.childTicketCount = childTicketCount;
+		this.youthTicketCount = youthTicketCount;
+	}
+
+
+
+	public TicketDetailsModel() {
+	}
+	
 }

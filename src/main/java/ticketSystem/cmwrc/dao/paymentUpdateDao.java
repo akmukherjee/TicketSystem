@@ -23,6 +23,12 @@ public class paymentUpdateDao {
 		 public void setDataSource(DataSource dataSource) { 
 	         this.dataSource = dataSource;
 	 	     }
+		 /**************************************************************************************************
+		  * This method updates the TicketSalesMaster table with the authorizationCode for shoppingCartId provided. 
+		  *
+		  * @param  authorizationCode          The Authorization Code received from the Payment Site. 
+		  * @return status  				   The Status of the Insert Query.
+		  *************************************************************************************************/		 
 	  public boolean updatePaymentRecord(Integer shoppingCartId, String authorizationCode){
 		  
 		    final String updateSql = "UPDATE ticketSalesMaster SET paymentAuthCode = ? WHERE shoppingCartId = ?";
@@ -36,9 +42,15 @@ public class paymentUpdateDao {
 	       
 	        return status;
 	  }
+		 /**************************************************************************************************
+		  * This method requests the Details of the purchase for shoppingCartId provided. 
+		  *
+		  * @param  shoppingCartId           The shopping Cart entry made into the TicketSalesMaster Table. 
+		  * @return List<TicketDetailsModel> A List object containing the Tickets purchased for this event.	  
+		  *************************************************************************************************/	  
 	  public List<TicketDetailsModel> getTicketRows(int shoppingCartId){
 		  List<TicketDetailsModel> rows = new ArrayList<TicketDetailsModel>();
-		  final String sql = "Select ticketCode, adultTicketCount, childTicketCount, youthTicketCount from TicketSalesDetailsCopy where shoppingCartId =";
+		  final String sql = "Select ticketCode, adultTicketCount, childTicketCount, youthTicketCount from TicketSalesDetails where shoppingCartId =";
 		  try{
 			  rows = jdbcTemplate.query(sql+shoppingCartId,new TicketDetailsModel());
 			  System.out.println("Rows returned "+rows.size());

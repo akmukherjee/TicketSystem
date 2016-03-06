@@ -16,32 +16,43 @@ public class TicketDataModel implements Serializable{
 	private String state;
 	private String zip;
 	
-	private int adultSatFront;
-	private int childSatFront;
-	private int youthSatFront;
+	private int adultSatFrontDropDown;
+	private int childSatFrontDropDown;
+	private int youthSatFrontDropDown;
 	
-	private int adultSunFront;
-	private int childSunFront;
-	private int youthSunFront;
+	private int adultSunFrontDropDown;
+	private int childSunFrontDropDown;
+	private int youthSunFrontDropDown;
 	
-	private int adultBothFront;
-	private int childBothFront;
-	private int youthBothFront;
+	private int adultBothFrontDropDown;
+	private int childBothFrontDropDown;
+	private int youthBothFrontDropDown;
 	
-	private int adultSatBack;
-	private int childSatBack;
-	private int youthSatBack;
+	private int adultSatBackDropDown;
+	private int childSatBackDropDown;
+	private int youthSatBackDropDown;
 	
-	private int adultSunBack;
-	private int childSunBack;
-	private int youthSunBack;
+	private int adultSunBackDropDown;
+	private int childSunBackDropDown;
+	private int youthSunBackDropDown;
 	
-	private int adultBothBack;
-	private int childBothBack;
-	private int youthBothBack;
+	private int adultBothBackDropDown;
+	private int childBothBackDropDown;
+	private int youthBothBackDropDown;
 	
 	private int totalPayment;
 	
+	private int eventId;
+	
+	public int getEventId() {
+		return eventId;
+	}
+	public void setEventId(int eventId) {
+		this.eventId = eventId;
+	}
+	public void setPmtRadio(String pmtRadio) {
+		this.pmtRadio = pmtRadio;
+	}
 	private String pmtRadio;
 	public String getFirstName() {
 		return firstName;
@@ -97,114 +108,7 @@ public class TicketDataModel implements Serializable{
 	public void setZip(String zip) {
 		this.zip = zip;
 	}
-	public int getAdultSatFront() {
-		return adultSatFront;
-	}
-	public void setAdultSatFront(int adultSatFront) {
-		this.adultSatFront = adultSatFront;
-	}
-	public int getChildSatFront() {
-		return childSatFront;
-	}
-	public void setChildSatFront(int childSatFront) {
-		this.childSatFront = childSatFront;
-	}
-	public int getYouthSatFront() {
-		return youthSatFront;
-	}
-	public void setYouthSatFront(int youthSatFront) {
-		this.youthSatFront = youthSatFront;
-	}
-	public int getAdultSunFront() {
-		return adultSunFront;
-	}
-	public void setAdultSunFront(int adultSunFront) {
-		this.adultSunFront = adultSunFront;
-	}
-	public int getChildSunFront() {
-		return childSunFront;
-	}
-	public void setChildSunFront(int childSunFront) {
-		this.childSunFront = childSunFront;
-	}
-	public int getYouthSunFront() {
-		return youthSunFront;
-	}
-	public void setYouthSunFront(int youthSunFront) {
-		this.youthSunFront = youthSunFront;
-	}
-	public int getAdultBothFront() {
-		return adultBothFront;
-	}
-	public void setAdultBothFront(int adultBothFront) {
-		this.adultBothFront = adultBothFront;
-	}
-	public int getChildBothFront() {
-		return childBothFront;
-	}
-	public void setChildBothFront(int childBothFront) {
-		this.childBothFront = childBothFront;
-	}
-	public int getYouthBothFront() {
-		return youthBothFront;
-	}
-	public void setYouthBothFront(int youthBothFront) {
-		this.youthBothFront = youthBothFront;
-	}
-	public int getAdultSatBack() {
-		return adultSatBack;
-	}
-	public void setAdultSatBack(int adultSatBack) {
-		this.adultSatBack = adultSatBack;
-	}
-	public int getChildSatBack() {
-		return childSatBack;
-	}
-	public void setChildSatBack(int childSatBack) {
-		this.childSatBack = childSatBack;
-	}
-	public int getYouthSatBack() {
-		return youthSatBack;
-	}
-	public void setYouthSatBack(int youthSatBack) {
-		this.youthSatBack = youthSatBack;
-	}
-	public int getAdultSunBack() {
-		return adultSunBack;
-	}
-	public void setAdultSunBack(int adultSunBack) {
-		this.adultSunBack = adultSunBack;
-	}
-	public int getChildSunBack() {
-		return childSunBack;
-	}
-	public void setChildSunBack(int childSunBack) {
-		this.childSunBack = childSunBack;
-	}
-	public int getYouthSunBack() {
-		return youthSunBack;
-	}
-	public void setYouthSunBack(int youthSunBack) {
-		this.youthSunBack = youthSunBack;
-	}
-	public int getAdultBothBack() {
-		return adultBothBack;
-	}
-	public void setAdultBothBack(int adultBothBack) {
-		this.adultBothBack = adultBothBack;
-	}
-	public int getChildBothBack() {
-		return childBothBack;
-	}
-	public void setChildBothBack(int childBothBack) {
-		this.childBothBack = childBothBack;
-	}
-	public int getYouthBothBack() {
-		return youthBothBack;
-	}
-	public void setYouthBothBack(int youthBothBack) {
-		this.youthBothBack = youthBothBack;
-	}
+	
 	public int getTotalPayment() {
 		return totalPayment;
 	}
@@ -214,19 +118,132 @@ public class TicketDataModel implements Serializable{
 	public String getPmtRadio() {
 		return pmtRadio;
 	}
-	public void setPmtRadioCC(String pmtRadio) {
-		this.pmtRadio = pmtRadio;
-	}
 	
+	
+	
+	
+	
+	public int getYouthSatFrontDropDown() {
+		return youthSatFrontDropDown;
+	}
+	public void setYouthSatFrontDropDown(int youthSatFrontDropDown) {
+		this.youthSatFrontDropDown = youthSatFrontDropDown;
+	}
+	public int getAdultSatFrontDropDown() {
+		return adultSatFrontDropDown;
+	}
+	public void setAdultSatFrontDropDown(int adultSatFrontDropDown) {
+		this.adultSatFrontDropDown = adultSatFrontDropDown;
+	}
+	public int getChildSatFrontDropDown() {
+		return childSatFrontDropDown;
+	}
+	public void setChildSatFrontDropDown(int childSatFrontDropDown) {
+		this.childSatFrontDropDown = childSatFrontDropDown;
+	}
+	public int getAdultSunFrontDropDown() {
+		return adultSunFrontDropDown;
+	}
+	public void setAdultSunFrontDropDown(int adultSunFrontDropDown) {
+		this.adultSunFrontDropDown = adultSunFrontDropDown;
+	}
+	public int getChildSunFrontDropDown() {
+		return childSunFrontDropDown;
+	}
+	public void setChildSunFrontDropDown(int childSunFrontDropDown) {
+		this.childSunFrontDropDown = childSunFrontDropDown;
+	}
+	public int getYouthSunFrontDropDown() {
+		return youthSunFrontDropDown;
+	}
+	public void setYouthSunFrontDropDown(int youthSunFrontDropDown) {
+		this.youthSunFrontDropDown = youthSunFrontDropDown;
+	}
+	public int getAdultBothFrontDropDown() {
+		return adultBothFrontDropDown;
+	}
+	public void setAdultBothFrontDropDown(int adultBothFrontDropDown) {
+		this.adultBothFrontDropDown = adultBothFrontDropDown;
+	}
+	public int getChildBothFrontDropDown() {
+		return childBothFrontDropDown;
+	}
+	public void setChildBothFrontDropDown(int childBothFrontDropDown) {
+		this.childBothFrontDropDown = childBothFrontDropDown;
+	}
+	public int getYouthBothFrontDropDown() {
+		return youthBothFrontDropDown;
+	}
+	public void setYouthBothFrontDropDown(int youthBothFrontDropDown) {
+		this.youthBothFrontDropDown = youthBothFrontDropDown;
+	}
+	public int getAdultSatBackDropDown() {
+		return adultSatBackDropDown;
+	}
+	public void setAdultSatBackDropDown(int adultSatBackDropDown) {
+		this.adultSatBackDropDown = adultSatBackDropDown;
+	}
+	public int getChildSatBackDropDown() {
+		return childSatBackDropDown;
+	}
+	public void setChildSatBackDropDown(int childSatBackDropDown) {
+		this.childSatBackDropDown = childSatBackDropDown;
+	}
+	public int getYouthSatBackDropDown() {
+		return youthSatBackDropDown;
+	}
+	public void setYouthSatBackDropDown(int youthSatBackDropDown) {
+		this.youthSatBackDropDown = youthSatBackDropDown;
+	}
+	public int getAdultSunBackDropDown() {
+		return adultSunBackDropDown;
+	}
+	public void setAdultSunBackDropDown(int adultSunBackDropDown) {
+		this.adultSunBackDropDown = adultSunBackDropDown;
+	}
+	public int getChildSunBackDropDown() {
+		return childSunBackDropDown;
+	}
+	public void setChildSunBackDropDown(int childSunBackDropDown) {
+		this.childSunBackDropDown = childSunBackDropDown;
+	}
+	public int getYouthSunBackDropDown() {
+		return youthSunBackDropDown;
+	}
+	public void setYouthSunBackDropDown(int youthSunBackDropDown) {
+		this.youthSunBackDropDown = youthSunBackDropDown;
+	}
+	public int getAdultBothBackDropDown() {
+		return adultBothBackDropDown;
+	}
+	public void setAdultBothBackDropDown(int adultBothBackDropDown) {
+		this.adultBothBackDropDown = adultBothBackDropDown;
+	}
+	public int getChildBothBackDropDown() {
+		return childBothBackDropDown;
+	}
+	public void setChildBothBackDropDown(int childBothBackDropDown) {
+		this.childBothBackDropDown = childBothBackDropDown;
+	}
+	public int getYouthBothBackDropDown() {
+		return youthBothBackDropDown;
+	}
+	public void setYouthBothBackDropDown(int youthBothBackDropDown) {
+		this.youthBothBackDropDown = youthBothBackDropDown;
+	}
+
 	public TicketDataModel(String firstName, String lastName, String email,
 			String phone, String addressL1, String addressL2, String city,
-			String state, String zip, int adultSatFront, int childSatFront,
-			int youthSatFront, int adultSunFront, int childSunFront,
-			int youthSunFront, int adultBothFront, int childBothFront,
-			int youthBothFront, int adultSatBack, int childSatBack,
-			int youthSatBack, int adultSunBack, int childSunBack,
-			int youthSunBack, int adultBothBack, int childBothBack,
-			int youthBothBack, int totalPayment, String pmtRadioCC,
+			String state, String zip, int adultSatFrontDropDown,
+			int childSatFrontDropDown, int youthSatFrontDropDown,
+			int adultSunFrontDropDown, int childSunFrontDropDown,
+			int youthSunFrontDropDown, int adultBothFrontDropDown,
+			int childBothFrontDropDown, int youthBothFrontDropDown,
+			int adultSatBackDropDown, int childSatBackDropDown,
+			int youthSatBackDropDown, int adultSunBackDropDown,
+			int childSunBackDropDown, int youthSunBackDropDown,
+			int adultBothBackDropDown, int childBothBackDropDown,
+			int youthBothBackDropDown, int totalPayment, int eventId,
 			String pmtRadio) {
 		super();
 		this.firstName = firstName;
@@ -238,27 +255,27 @@ public class TicketDataModel implements Serializable{
 		this.city = city;
 		this.state = state;
 		this.zip = zip;
-		this.adultSatFront = adultSatFront;
-		this.childSatFront = childSatFront;
-		this.youthSatFront = youthSatFront;
-		this.adultSunFront = adultSunFront;
-		this.childSunFront = childSunFront;
-		this.youthSunFront = youthSunFront;
-		this.adultBothFront = adultBothFront;
-		this.childBothFront = childBothFront;
-		this.youthBothFront = youthBothFront;
-		this.adultSatBack = adultSatBack;
-		this.childSatBack = childSatBack;
-		this.youthSatBack = youthSatBack;
-		this.adultSunBack = adultSunBack;
-		this.childSunBack = childSunBack;
-		this.youthSunBack = youthSunBack;
-		this.adultBothBack = adultBothBack;
-		this.childBothBack = childBothBack;
-		this.youthBothBack = youthBothBack;
+		this.adultSatFrontDropDown = adultSatFrontDropDown;
+		this.childSatFrontDropDown = childSatFrontDropDown;
+		this.youthSatFrontDropDown = youthSatFrontDropDown;
+		this.adultSunFrontDropDown = adultSunFrontDropDown;
+		this.childSunFrontDropDown = childSunFrontDropDown;
+		this.youthSunFrontDropDown = youthSunFrontDropDown;
+		this.adultBothFrontDropDown = adultBothFrontDropDown;
+		this.childBothFrontDropDown = childBothFrontDropDown;
+		this.youthBothFrontDropDown = youthBothFrontDropDown;
+		this.adultSatBackDropDown = adultSatBackDropDown;
+		this.childSatBackDropDown = childSatBackDropDown;
+		this.youthSatBackDropDown = youthSatBackDropDown;
+		this.adultSunBackDropDown = adultSunBackDropDown;
+		this.childSunBackDropDown = childSunBackDropDown;
+		this.youthSunBackDropDown = youthSunBackDropDown;
+		this.adultBothBackDropDown = adultBothBackDropDown;
+		this.childBothBackDropDown = childBothBackDropDown;
+		this.youthBothBackDropDown = youthBothBackDropDown;
 		this.totalPayment = totalPayment;
+		this.eventId = eventId;
 		this.pmtRadio = pmtRadio;
-		
 	}
 	public TicketDataModel() {
 		//super();
