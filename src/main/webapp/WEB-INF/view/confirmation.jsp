@@ -66,6 +66,12 @@
 
                             </table>
                             <p align="center"><b style="font-size:20px">Please print this page for your records and bring it to the event.</b></p>
+                    <div style="text-align:center">
+                           <a href="#" class="btn btn-success btn-lg" onClick="window.print()" >
+      <span class="glyphicon glyphicon-print"></span> Print 
+    </a>
+                    
+                    </div>
                 </div>    
            
         

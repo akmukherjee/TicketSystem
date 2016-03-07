@@ -95,12 +95,12 @@ public class ticketInfoDao {
 	  *************************************************************************************************/
 	public void addTicketDetailsData(TicketDataModel tmodel, Integer shoppingCartId){
 		
-		String SAT_FRONT_SEC="SatFrontSec";
-		String SUN_FRONT_SEC="SunFrontSec";
-		String BOTH_DAY_FRONT_SEC="BothDayFrontSec";
-		String SAT_BACK_SEC ="SatBackSec";
-		String SUN_BACK_SEC ="SunBackSec";
-		String BOTH_DAY_BACK_SEC ="BothDayBackSec";
+		String SAT_FRONT_SEC="Saturday Front Section";
+		String SUN_FRONT_SEC="Sunday Front Section";
+		String BOTH_DAY_FRONT_SEC="Both Days Front Section";
+		String SAT_BACK_SEC ="Saturday  Rear Section";
+		String SUN_BACK_SEC ="Sunday Rear Section";
+		String BOTH_DAY_BACK_SEC ="Both Days Rear Section";
 		
 		 String ticketCode;
 		 /************************************************************************************************
@@ -175,8 +175,8 @@ public class ticketInfoDao {
 		//HardCoding for Testing
 		 eventId=1;
 		 String eventName ="GeetRamayana2016";
-		 int extraDaysInMsPerDay = 1000*60*60*24;
-		 int numExtraDays =10;
+		 long extraDaysInMsPerDay = 1000*60*60*24;
+		 long numExtraDays =62;
 		 String sqlGetTicketRows ="SELECT ticketCode, ticketDescription, adultTicketPrice, childTicketPrice,youthTicketPrice FROM ticketoptions WHERE ? BETWEEN effectiveStart AND effectiveEnd";
 		 //CHANGE THIS IN DEPLOYED CODE
 		 long extraDaysMs = Calendar.getInstance().getTime().getTime();//+numExtraDays*extraDaysInMsPerDay;
@@ -197,7 +197,7 @@ public class ticketInfoDao {
 	    	  ticketRow.setYouthTicketPrice(Integer.parseInt(String.valueOf(row.get("youthTicketPrice"))));
 	    	  if(ticketRow!=null){	    	  ticketRows.add(ticketRow);
 }
-	    	  //System.out.println("TicketRow: "+ ticketRow);
+	    	  System.out.println("Adult Ticket Price: "+ String.valueOf(row.get("adultTicketPrice")));
 	      }
 	        
 
